@@ -10,6 +10,7 @@ public class SistemaLanzador {
 		char letra_c = 'C';
 		char letra_d = 'D';
 		char letra_e = 'E';
+		String [] letrasPuertas= {"A","B","C"};
 		// Iparque parque = new Parque();
 
 		// Thread puertaA = new Thread(new ActividadEntradaPuerta("A", parque));
@@ -20,7 +21,7 @@ public class SistemaLanzador {
 
 		System.out.println("¡Parque abierto!");
 
-		// for (int i = 0; i < Integer.parseInt(args[0]); i++) {
+		//for (int i = 0; i < Integer.parseInt(args[3]); i++) {
 
 		String puertaA = "" + ((char) (letra_a++));
 		String puertaB = "" + ((char) (letra_b++));

@@ -27,10 +27,10 @@ public class Parque implements IParque{
 		if (contadoresPersonasPuerta.get(puerta) == null){
 			contadoresPersonasPuerta.put(puerta, 0);
 		}
-		
 		// Aumentamos el contador total y el individual
 		//contadorPersonasTotales++;		
 		contadoresPersonasPuerta.put(puerta, contadoresPersonasPuerta.get(puerta)+1);
+		comprobarAntesDeEntrar();
 		entraAlguienAlParque();
 		
 		// Imprimimos el estado del parque
@@ -42,11 +42,12 @@ public class Parque implements IParque{
 	@Override
 	// Declaracion del metodo salir del parque
 	public synchronized void salirDelParque(String puerta) throws InterruptedException {
-		comprobarAlSalir();
+		
 		comprobarPuerta(puerta);
 		//contadorPersonasTotales--;
 		Integer cont = contadoresPersonasPuerta.get(puerta);
 		contadoresPersonasPuerta.put(puerta, cont - 1);
+		comprobarAlSalir();
         saleAlguienDelParque();
         imprimirInfoSalida(puerta, "Salida");
         checkInvariante();	
