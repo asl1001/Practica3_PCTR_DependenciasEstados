@@ -8,8 +8,7 @@ public class Parque implements IParque{
 
 
 	private int contadorPersonasTotales;
-	//contador a 40 porque puede haber 20 personas en los parques
-	private int max = 40;
+	private int max = 50;
 	private int min = 0;
 	private Hashtable<String, Integer> contadoresPersonasPuerta;
 	public static final int totalPersonasPuertas = 20;
@@ -39,10 +38,6 @@ public class Parque implements IParque{
 		// Imprimimos el estado del parque
 		imprimirInfo(puerta, "Entrada");
 		checkInvariante();
-		// TODO
-		
-		
-		// TODO
 		
 	}
 	
@@ -55,12 +50,21 @@ public class Parque implements IParque{
 
 		contadoresPersonasPuerta.put(puerta, cont - 1);
         saleAlguienDelParque();
-        imprimirInfo(puerta, "salida");
+        imprimirInfoSalida(puerta, "Salida");
         checkInvariante();	
 	}
 	
-	
 	private void imprimirInfo (String puerta, String movimiento){
+		System.out.println(movimiento + " por puerta " + puerta);
+		System.out.println("--> Personas en el parque " + contadorPersonasTotales); //+ " tiempo medio de estancia: "  + tmedio);
+		
+		// Iteramos por todas las puertas e imprimimos sus entradas
+		for(String p: contadoresPersonasPuerta.keySet()){
+			System.out.println("----> Por puerta " + p + " " + contadoresPersonasPuerta.get(p));
+		}
+		System.out.println(" ");
+	}
+	private void imprimirInfoSalida (String puerta, String movimiento){
 		System.out.println(movimiento + " por puerta " + puerta);
 		System.out.println("--> Personas en el parque " + contadorPersonasTotales); //+ " tiempo medio de estancia: "  + tmedio);
 		
@@ -82,13 +86,9 @@ public class Parque implements IParque{
 	
 	protected void checkInvariante() {
 		// TODO Auto-generated method stub
-				int contador=0;
-				Set <String> keys=contadoresPersonasPuerta.keySet();
-				for(String key: keys) {
-					contador+=contadoresPersonasPuerta.get(key);
-				}
+		assert contadorPersonasTotales<=max;
 		assert sumarContadoresPuerta() == contadorPersonasTotales : "INV: La suma de contadores de las puertas debe ser igual al valor del contador del parte";
-		// TODO
+	
 	}
 
 	protected void comprobarAntesDeEntrar() throws InterruptedException{	
