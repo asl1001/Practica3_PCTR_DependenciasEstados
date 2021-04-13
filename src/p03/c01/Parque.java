@@ -83,7 +83,9 @@ public class Parque implements IParque{
 
 
 	protected void comprobarAntesDeSalir(){	
-	
+		// si se resta notificamos que hay una pero
+		contadorPersonasTotales--;
+		notify();
 	}
 
 
