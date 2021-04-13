@@ -23,9 +23,9 @@ public class Parque implements IParque{
 
 
 	@Override
-	public void entrarAlParque(String puerta) throws InterruptedException{		// TODO
+	public synchronized void entrarAlParque(String puerta) throws InterruptedException{		// TODO
 		comprobarAntesDeEntrar();
-		añadirPuerta(puerta);
+		//añadirPuerta(puerta);
 		// Si no hay entradas por esa puerta, inicializamos
 		if (contadoresPersonasPuerta.get(puerta) == null){
 			contadoresPersonasPuerta.put(puerta, 0);
@@ -48,7 +48,7 @@ public class Parque implements IParque{
 	
 	@Override
 	// Declaracion del metodo salir del parque
-	public void salirDelParque(String puerta) throws InterruptedException {
+	public synchronized void salirDelParque(String puerta) throws InterruptedException {
 		comprobarAlSalir();
 		comprobarPuerta(puerta);
 		Integer cont = contadoresPersonasPuerta.get(puerta);
