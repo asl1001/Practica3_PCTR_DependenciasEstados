@@ -89,11 +89,15 @@ public class Parque implements IParque{
 	}
 
 
-	protected void comprobarAntesDeSalir(){	
-		// si se resta notificamos que hay una pero
-		contadorPersonasTotales--;
-		notify();
-	}
+	public void comprobarAlSalir() throws InterruptedException {
+        while( contadorPersonasTotales == min ) {
+            wait();
+        }
+    }
 
+	public void saleAlguienDelParque() {
+        contadorPersonasTotales--;
+        notify();
+    }
 
 }
