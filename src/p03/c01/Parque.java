@@ -6,9 +6,11 @@ import java.util.Hashtable;
 public class Parque implements IParque{
 
 
-	// TODO 
 	private int contadorPersonasTotales;
+	private int max = 40;
+	private int min = 0;
 	private Hashtable<String, Integer> contadoresPersonasPuerta;
+	public static final int totalPersonasPuertas = 20;
 	
 	
 	public Parque() {	// TODO
@@ -25,7 +27,6 @@ public class Parque implements IParque{
 		if (contadoresPersonasPuerta.get(puerta) == null){
 			contadoresPersonasPuerta.put(puerta, 0);
 		}
-		
 		// TODO
 				
 		
