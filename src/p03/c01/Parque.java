@@ -11,8 +11,8 @@ public class Parque implements IParque{
 	private int max = 50;
 	private int min = 0;
 	private Hashtable<String, Integer> contadoresPersonasPuerta;
-	public static final int totalPersonasPuertas = 20;
-	
+	public static final int totalPersonasPuertasEntrada = 20;
+	public static final int totalPersonasPuertasSalida = 20;
 	
 	public Parque() {	// TODO
 		contadorPersonasTotales = 0;
@@ -24,7 +24,7 @@ public class Parque implements IParque{
 	@Override
 	public synchronized void entrarAlParque(String puerta) throws InterruptedException{		// TODO
 		comprobarAntesDeEntrar();
-		//añadirPuerta(puerta);
+		añadirPuerta(puerta);
 		// Si no hay entradas por esa puerta, inicializamos
 		if (contadoresPersonasPuerta.get(puerta) == null){
 			contadoresPersonasPuerta.put(puerta, 0);
@@ -94,14 +94,26 @@ public class Parque implements IParque{
 	protected void comprobarAntesDeEntrar() throws InterruptedException{	
 		//si el contador el mayor hay que esperar a que haya gente
 		while( contadorPersonasTotales == max ) {
-			wait();
+			try {
+				wait();
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+		
 		}
 	}
 
 
 	public void comprobarAlSalir() throws InterruptedException {
         while( contadorPersonasTotales == min ) {
-            wait();
+        	try {
+        		 wait();
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+           
         }
     }
 
