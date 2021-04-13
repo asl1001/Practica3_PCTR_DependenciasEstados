@@ -100,4 +100,9 @@ public class Parque implements IParque{
         notify();
     }
 
+public void comprobarPuerta(String puerta) throws InterruptedException {
+    if (!contadoresPersonasPuerta.containsKey(puerta)) {
+        wait();
+    }
+}
 }
