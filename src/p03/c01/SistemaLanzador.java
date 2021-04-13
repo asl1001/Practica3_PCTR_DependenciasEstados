@@ -31,26 +31,29 @@ public class SistemaLanzador {
 		// Creación de hilos de entrada
 		ActividadEntradaPuerta entradaA = new ActividadEntradaPuerta(puertaA, parque);
 		ActividadEntradaPuerta entradaB = new ActividadEntradaPuerta(puertaB, parque);
-		// ActividadEntradaPuerta entradaC = new ActividadEntradaPuerta(puertaC,
-		// parque);
+		ActividadEntradaPuerta entradaC = new ActividadEntradaPuerta(puertaC,parque);
 		// ActividadEntradaPuerta entradaD = new ActividadEntradaPuerta(puertaD,
 		// parque);
 		// ActividadEntradaPuerta entradaE = new ActividadEntradaPuerta(puertaE,
 		// parque);
 		ActividadSalidaPuerta salidaA = new ActividadSalidaPuerta(puertaA, parque);
 		ActividadSalidaPuerta salidaB = new ActividadSalidaPuerta(puertaB, parque);
+		ActividadSalidaPuerta salidaC = new ActividadSalidaPuerta(puertaC, parque);
 		new Thread(entradaA).start();
 		new Thread(salidaA).start();
 	    new Thread (entradaB).start();
 		new Thread(salidaB).start();
-		// new Thread (entradaC).start();
+		new Thread (entradaC).start();
+		new Thread(salidaC).start();
 		// new Thread (entradaD).start();
 		// new Thread (entradaE).start();
 
 		Thread pa = new Thread(new ActividadEntradaPuerta("A", parque));
 		Thread pb = new Thread(new ActividadEntradaPuerta("B", parque));
+		Thread pc = new Thread(new ActividadEntradaPuerta("C", parque));
 		Thread pA = new Thread(new ActividadSalidaPuerta("A", parque));
 		Thread pB = new Thread(new ActividadSalidaPuerta("B", parque));
+		Thread pC = new Thread(new ActividadSalidaPuerta("C", parque));
 		// Thread pc= new Thread( new ActividadEntradaPuerta("C", parque));
 		// Thread pd= new Thread( new ActividadEntradaPuerta("D", parque));
 		// Thread pe= new Thread( new ActividadEntradaPuerta("E", parque));
