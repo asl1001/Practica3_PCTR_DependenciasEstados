@@ -2,11 +2,13 @@ package src.p03.c01;
 
 import java.util.Enumeration;
 import java.util.Hashtable;
+import java.util.Set;
 
 public class Parque implements IParque{
 
 
 	private int contadorPersonasTotales;
+	//contador a 40 porque puede haber 20 personas en los parques
 	private int max = 40;
 	private int min = 0;
 	private Hashtable<String, Integer> contadoresPersonasPuerta;
@@ -36,7 +38,7 @@ public class Parque implements IParque{
 		
 		// Imprimimos el estado del parque
 		imprimirInfo(puerta, "Entrada");
-		
+		checkInvariante();
 		// TODO
 		
 		
@@ -69,8 +71,13 @@ public class Parque implements IParque{
 	}
 	
 	protected void checkInvariante() {
+		// TODO Auto-generated method stub
+				int contador=0;
+				Set <String> keys=contadoresPersonasPuerta.keySet();
+				for(String key: keys) {
+					contador+=contadoresPersonasPuerta.get(key);
+				}
 		assert sumarContadoresPuerta() == contadorPersonasTotales : "INV: La suma de contadores de las puertas debe ser igual al valor del contador del parte";
-		// TODO 
 		// TODO
 	}
 
