@@ -74,16 +74,16 @@ public class Parque implements IParque{
 		// TODO
 	}
 
-	protected void comprobarAntesDeEntrar(){	// TODO
-		//
-		// TODO
-		//
+	protected void comprobarAntesDeEntrar() throws InterruptedException{	
+		//si el contador el mayor hay que esperar a que haya gente
+		while( contadorPersonasTotales == max ) {
+			wait();
+		}
 	}
 
-	protected void comprobarAntesDeSalir(){		// TODO
-		//
-		// TODO
-		//
+
+	protected void comprobarAntesDeSalir(){	
+	
 	}
 
 
