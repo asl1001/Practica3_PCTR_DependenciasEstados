@@ -46,8 +46,18 @@ public class Parque implements IParque{
 		
 	}
 	
-	// Declaracion del metodo salir dwl parque
-	public void salirDelParque(String puerta) {}
+	@Override
+	// Declaracion del metodo salir del parque
+	public void salirDelParque(String puerta) throws InterruptedException {
+		comprobarAlSalir();
+		comprobarPuerta(puerta);
+		Integer cont = contadoresPersonasPuerta.get(puerta);
+
+		contadoresPersonasPuerta.put(puerta, cont - 1);
+        saleAlguienDelParque();
+        imprimirInfo(puerta, "salida");
+        checkInvariante();	
+	}
 	
 	
 	private void imprimirInfo (String puerta, String movimiento){
