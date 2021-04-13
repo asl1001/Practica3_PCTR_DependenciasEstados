@@ -23,8 +23,8 @@ public class Parque implements IParque{
 
 
 	@Override
-	public void entrarAlParque(String puerta){		// TODO
-		
+	public void entrarAlParque(String puerta) throws InterruptedException{		// TODO
+		comprobarAntesDeEntrar();
 		// Si no hay entradas por esa puerta, inicializamos
 		if (contadoresPersonasPuerta.get(puerta) == null){
 			contadoresPersonasPuerta.put(puerta, 0);
