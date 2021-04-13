@@ -25,16 +25,16 @@ public class Parque implements IParque{
 	@Override
 	public void entrarAlParque(String puerta) throws InterruptedException{		// TODO
 		comprobarAntesDeEntrar();
+		añadirPuerta(puerta);
 		// Si no hay entradas por esa puerta, inicializamos
 		if (contadoresPersonasPuerta.get(puerta) == null){
 			contadoresPersonasPuerta.put(puerta, 0);
 		}
-		// TODO
-				
 		
 		// Aumentamos el contador total y el individual
 		contadorPersonasTotales++;		
 		contadoresPersonasPuerta.put(puerta, contadoresPersonasPuerta.get(puerta)+1);
+		entraAlguienAlParque();
 		
 		// Imprimimos el estado del parque
 		imprimirInfo(puerta, "Entrada");
@@ -99,6 +99,10 @@ public class Parque implements IParque{
         contadorPersonasTotales--;
         notify();
     }
+	public void entraAlguienAlParque() {
+		contadorPersonasTotales++;
+		notify();
+	}
 
 	public void añadirPuerta(String puerta) {
         if (!contadoresPersonasPuerta.containsKey(puerta)) {
