@@ -43,9 +43,8 @@ public class Parque implements IParque{
 		
 	}
 	
-	// 
-	// TODO Método salirDelParque
-	//
+	// Declaracion del metodo salir dwl parque
+	public void salirDelParque(String puerta) {}
 	
 	
 	private void imprimirInfo (String puerta, String movimiento){
