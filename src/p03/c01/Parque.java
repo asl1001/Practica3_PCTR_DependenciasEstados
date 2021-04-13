@@ -11,8 +11,6 @@ public class Parque implements IParque{
 	private int max = 50;
 	private int min = 0;
 	private Hashtable<String, Integer> contadoresPersonasPuerta;
-	public static final int totalPersonasPuertasEntrada = 20;
-	public static final int totalPersonasPuertasSalida = 20;
 	
 	public Parque() {	// TODO
 		contadorPersonasTotales = 0;
@@ -31,7 +29,7 @@ public class Parque implements IParque{
 		}
 		
 		// Aumentamos el contador total y el individual
-		contadorPersonasTotales++;		
+		//contadorPersonasTotales++;		
 		contadoresPersonasPuerta.put(puerta, contadoresPersonasPuerta.get(puerta)+1);
 		entraAlguienAlParque();
 		
@@ -46,7 +44,7 @@ public class Parque implements IParque{
 	public synchronized void salirDelParque(String puerta) throws InterruptedException {
 		comprobarAlSalir();
 		comprobarPuerta(puerta);
-		contadorPersonasTotales--;
+		//contadorPersonasTotales--;
 		Integer cont = contadoresPersonasPuerta.get(puerta);
 		contadoresPersonasPuerta.put(puerta, cont - 1);
         saleAlguienDelParque();
