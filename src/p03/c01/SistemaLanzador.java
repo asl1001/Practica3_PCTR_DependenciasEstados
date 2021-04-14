@@ -22,7 +22,6 @@ public class SistemaLanzador {
 			new Thread(entrada).start();
 			new Thread(salida).start();
 			pa.start();
-
 			pA.start();
 
 		}

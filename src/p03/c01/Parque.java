@@ -21,6 +21,7 @@ public class Parque implements IParque{
 
 	@Override
 	public synchronized void entrarAlParque(String puerta) throws InterruptedException{		// TODO
+		comprobarAntesDeEntrar();
 		añadirPuerta(puerta);
 		// Si no hay entradas por esa puerta, inicializamos
 		if (contadoresPersonasPuerta.get(puerta) == null){
@@ -29,7 +30,7 @@ public class Parque implements IParque{
 		// Aumentamos el contador total y el individual
 		//contadorPersonasTotales++;		
 		contadoresPersonasPuerta.put(puerta, contadoresPersonasPuerta.get(puerta)+1);
-		comprobarAntesDeEntrar();
+	
 		entraAlguienAlParque();
 		
 		// Imprimimos el estado del parque
@@ -41,13 +42,12 @@ public class Parque implements IParque{
 	@Override
 	// Declaracion del metodo salir del parque
 	public synchronized void salirDelParque(String puerta) throws InterruptedException {
-		
+		comprobarAlSalir();
 		comprobarPuerta(puerta);
 		//contadorPersonasTotales--;
+		saleAlguienDelParque();
 		Integer cont = contadoresPersonasPuerta.get(puerta);
 		contadoresPersonasPuerta.put(puerta, cont - 1);
-		comprobarAlSalir();
-        saleAlguienDelParque();
         imprimirInfoSalida(puerta, "Salida");
         checkInvariante();	
 	}
@@ -84,7 +84,7 @@ public class Parque implements IParque{
 	
 	protected void checkInvariante() {
 		// TODO Auto-generated method stub
-		assert contadorPersonasTotales<=max;
+		assert contadorPersonasTotales<=20;
 		assert sumarContadoresPuerta() == contadorPersonasTotales : "INV: La suma de contadores de las puertas debe ser igual al valor del contador del parte";
 	
 	}
